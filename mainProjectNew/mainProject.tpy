@@ -4,7 +4,7 @@
 	<ProjectInfo>
 		<Path>C:\Documents and Settings\user\Мои документы\smarthouse_twincat\mainProjectNew\mainProject.pro</Path>
 		<IsLibrary>false</IsLibrary>
-		<ChangeDate>2013-08-06T16:26:39</ChangeDate>
+		<ChangeDate>2013-08-07T15:44:05</ChangeDate>
 		<Library>
 			<Name>STANDARD.LIB</Name>
 			<Path>C:\TWINCAT\PLC\LIB\STANDARD.LIB</Path>
@@ -61,6 +61,65 @@
 		</DirectoryInfo>
 	</DirectoryInfos>
 	<DataTypes>
+		<DataType>
+			<Name Decoration="1007297A" Crc32="0364613348" LastChange="2013-08-07T15:38:42">FB_SON_SOFF_MODBUS</Name>
+			<BitSize>184</BitSize>
+			<SubItem>
+				<Name>MEM</Name>
+				<Type>BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name IsDefinedInLibrary="1" Library="C:\TWINCAT\PLC\LIB\STANDARD.LIB">TX</Name>
+				<Type Decoration="10050B9B">TP</Type>
+				<BitSize>112</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>FLAG</Name>
+				<Type>BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>120</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name FbParameter="Input">IN</Name>
+				<Type>BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>128</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name FbParameter="Input">IN_MB</Name>
+				<Type>BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>136</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name FbParameter="Input">TC</Name>
+				<Type>TIME</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>144</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name FbParameter="Output">Q</Name>
+				<Type>BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>176</BitOffs>
+			</SubItem>
+			<FbInfo>
+				<CodeIndex>50</CodeIndex>
+				<InitIndex>51</InitIndex>
+			</FbInfo>
+		</DataType>
+		<DataType>
+			<Name Decoration="200142A6">ARRAY [0..7] OF STRING(20)</Name>
+			<Type Decoration="40000015">STRING(20)</Type>
+			<BitSize>1344</BitSize>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>8</Elements>
+			</ArrayInfo>
+		</DataType>
 		<DataType>
 			<Name Decoration="10060AFD" IsDefinedInLibrary="1" Library="C:\TWINCAT\PLC\LIB\STANDARD.LIB">CTD</Name>
 			<BitSize>64</BitSize>
@@ -611,9 +670,9 @@
 	</DataTypes>
 	<Functions>
 		<Function>
-			<Name Decoration="10010457" Crc32="2279949628" LastChange="2013-08-06T16:26:39">MAP_INPUTS</Name>
+			<Name Decoration="10010457" Crc32="2722661583" LastChange="2013-08-07T15:38:42">MAP_INPUTS</Name>
 			<FunInfo>
-				<CodeIndex>50</CodeIndex>
+				<CodeIndex>53</CodeIndex>
 				<ReturnValue>
 					<Name>MAP_INPUTS</Name>
 					<Type>BOOL</Type>
@@ -622,9 +681,53 @@
 			</FunInfo>
 		</Function>
 		<Function>
+			<Name Decoration="10010680" Crc32="3943735917" LastChange="2013-08-07T15:38:42">MAP_MODBUS_INPUTS</Name>
+			<FunInfo>
+				<CodeIndex>54</CodeIndex>
+				<ReturnValue>
+					<Name>MAP_MODBUS_INPUTS</Name>
+					<Type>BOOL</Type>
+					<BitSize>8</BitSize>
+				</ReturnValue>
+			</FunInfo>
+		</Function>
+		<Function>
+			<Name Decoration="100106E1" Crc32="1439610842" LastChange="2013-08-07T15:40:55">MAP_MODBUS_OUTPUTS</Name>
+			<FunInfo>
+				<CodeIndex>55</CodeIndex>
+				<ReturnValue>
+					<Name>MAP_MODBUS_OUTPUTS</Name>
+					<Type>BOOL</Type>
+					<BitSize>8</BitSize>
+				</ReturnValue>
+			</FunInfo>
+		</Function>
+		<Function>
+			<Name Decoration="100104B8" Crc32="2641702534" LastChange="2013-08-07T15:38:42">MAP_OUTPUTS</Name>
+			<FunInfo>
+				<CodeIndex>56</CodeIndex>
+				<ReturnValue>
+					<Name>MAP_OUTPUTS</Name>
+					<Type>BOOL</Type>
+					<BitSize>8</BitSize>
+				</ReturnValue>
+			</FunInfo>
+		</Function>
+		<Function>
+			<Name Decoration="10010725" Crc32="1016557102" LastChange="2013-08-07T15:38:42">RESET_MODBUS_INPUTS</Name>
+			<FunInfo>
+				<CodeIndex>57</CodeIndex>
+				<ReturnValue>
+					<Name>RESET_MODBUS_INPUTS</Name>
+					<Type>BOOL</Type>
+					<BitSize>8</BitSize>
+				</ReturnValue>
+			</FunInfo>
+		</Function>
+		<Function>
 			<Name Decoration="1004D2D0" IsDefinedInLibrary="1" Library="">PRINTF</Name>
 			<FunInfo>
-				<CodeIndex>51</CodeIndex>
+				<CodeIndex>58</CodeIndex>
 				<ReturnValue>
 					<Name IsDefinedInLibrary="1" Library="">PRINTF</Name>
 					<Type Decoration="40000051">STRING(80)</Type>
@@ -644,6 +747,32 @@
 					<Name FunParameter="Input" IsDefinedInLibrary="1" Library="">nType</Name>
 					<Type>INT</Type>
 					<BitSize>16</BitSize>
+				</FunParameter>
+			</FunInfo>
+		</Function>
+		<Function>
+			<Name Decoration="100452F0" Crc32="2931348103" LastChange="2013-08-07T15:44:03">FB_SET_IF_CHANGED</Name>
+			<FunInfo>
+				<CodeIndex>49</CodeIndex>
+				<ReturnValue>
+					<Name>FB_SET_IF_CHANGED</Name>
+					<Type>BOOL</Type>
+					<BitSize>8</BitSize>
+				</ReturnValue>
+				<FunParameter>
+					<Name>p</Name>
+					<Type Decoration="20010167" Pointer="1">ARRAY [0..48] OF BOOL</Type>
+					<BitSize>32</BitSize>
+				</FunParameter>
+				<FunParameter>
+					<Name FunParameter="Input">pt</Name>
+					<Type>DWORD</Type>
+					<BitSize>32</BitSize>
+				</FunParameter>
+				<FunParameter>
+					<Name FunParameter="Input">in</Name>
+					<Type>BOOL</Type>
+					<BitSize>8</BitSize>
 				</FunParameter>
 			</FunInfo>
 		</Function>
@@ -859,18 +988,21 @@
 	</Functions>
 	<Programs>
 		<Program>
-			<Name Decoration="1001053E" Crc32="2727793257" LastChange="2013-08-06T16:26:39">MAIN</Name>
+			<Name Decoration="10024A3A" Crc32="0183795104" LastChange="2013-08-07T15:38:42">MAIN</Name>
 			<PrgInfo>
-				<CodeIndex>49</CodeIndex>
+				<CodeIndex>52</CodeIndex>
 				<Symbol>
 					<Name>MAIN.T_LONG_PRESS</Name>
+				</Symbol>
+				<Symbol>
+					<Name>MAIN.OUT_KTN_LIGHT_1_CTL</Name>
 				</Symbol>
 			</PrgInfo>
 		</Program>
 	</Programs>
 	<Symbols>
 		<Symbol>
-			<Name>MAIN.T_LONG_PRESS</Name>
+			<Name TaskPrio="1">MAIN.T_LONG_PRESS</Name>
 			<Type>TIME</Type>
 			<Comment>
 				<![CDATA[Интервал определения длинного нажатия]]>
@@ -880,862 +1012,105 @@
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name TaskPrio="1">.IN_CTL_BTN_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Выключатель основной]]>
-			</Comment>
+			<Name TaskPrio="1">MAIN.OUT_KTN_LIGHT_1_CTL</Name>
+			<Type Decoration="1007297A">FB_SON_SOFF_MODBUS</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>42</IOffset>
-			<BitSize>8</BitSize>
+			<IOffset>4</IOffset>
+			<BitSize>184</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name>.IN_KTN_BTN_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Выключатель основной]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>43</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_KTN_BTN_2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Выключатель для вытяжки]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>44</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_KTN_DTR_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Датчик протечек]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>45</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_KTN_LIGHT_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет основной]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>46</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_KTN_LIGHT_2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет второстепенный (подсветка)]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>47</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_KTN_FAN_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Вытяжка]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>48</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_BLKN_BTN_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Выключатель]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>49</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_BLKN_LIGHT_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>50</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_LVG_BTN_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Выключатель]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>51</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_LVG_BTN_2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Выключатель на рабочем месте]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>52</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_LVG_LIGHT_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет основной]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>53</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_LVG_LIGHT_2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет второстепенный]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>54</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_BDR_BTN_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Выключатель]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>55</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_BDR_BTN_2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Выключатель над кроватью]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>56</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_BDR_BTN_3</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Выключатель над кроватью]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>57</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_BDR_LIGHT_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>58</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_BDR_LIGHT_2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет второстепенный]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>59</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_BDR_LIGHT_3</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет над кроватью (торшер)]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>60</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_BDR_LIGHT_4</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет над кроватью (торшер)]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>61</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_BMB_BTN_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Выключатель основной]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>62</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_BMB_BTN_2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Выключатель около зеркала]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>63</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_BMB_DTR_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Датчик протечек]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>64</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_BMB_LIGHT_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет основной]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>65</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_BMB_LIGHT_2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет около зеркала]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>66</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_BMB_FAN_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Вытяжка]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>67</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_BMB_VLV_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Вентиль]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>68</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_BMB_VLV_2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Вентиль]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>69</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_CHLD_BTN_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Выключатель]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>70</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_CHLD_LIGHT_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет основной]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>71</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_CHLD_LIGHT_2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет второстепенный]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>72</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_HLL_BTN_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Проходной выключатель]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>73</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_HLL_BTN_2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Проходной выключатель]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>74</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_HLL_BTN_3</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Выключатель на зеркало]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>75</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_HLL_LIGHT_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет основной]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>76</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_HLL_LIGHT_2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет второстепенный]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>77</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_HLL_LIGHT_3</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет зеркало]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>78</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_BMS_BTN_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Выключатель]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>79</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.IN_BMS_DTR_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Датчик протечек]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>80</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_BMS_LIGHT_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Свет]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>81</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_BMS_FAN_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Вытяжка]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>82</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_BMS_VLV_1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Вентиль]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>83</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.OUT_BMS_VLV_2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Вентиль]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>84</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.G_OUT_0_SOCKET_G2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Неотключаемые (рядом со щитком, роутер, сервер и т.п.)]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>85</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.G_OUT_1_2_SOCKET_G1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Общие]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>86</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.G_OUT_1_2_SOCKET_G2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Неотключаемые (холодильник)]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>87</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.G_OUT_1_2_SOCKET_G3</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Посудомойка]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>88</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.G_OUT_1_2_SOCKET_G4</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Плита, 380В]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>89</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.G_OUT_3_4_SOCKET_G1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Общие]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>90</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.G_OUT_3_4_SOCKET_G2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Неотключаемые (компьютер)]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>91</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.G_OUT_5_SOCKET_G1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Общие]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>92</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.G_OUT_5_SOCKET_G2</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Стиральная машина]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>93</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.G_OUT_5_SOCKET_G3</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Резерв на бойлер и (или) баню]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>94</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name>.G_OUT_6_7_SOCKET_G1</Name>
-			<Type>BOOL</Type>
-			<Comment>
-				<![CDATA[Общие]]>
-			</Comment>
-			<IGroup>16448</IGroup>
-			<IOffset>95</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_0</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>128</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_1</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>129</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_2</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>130</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_3</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>131</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_4</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>132</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_5</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>133</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_6</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>134</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_7</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>135</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_8</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>136</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_9</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>137</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_10</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>138</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_11</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>139</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_12</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>140</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_13</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>141</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_14</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>142</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.PlcInVar_15</Name>
-			<Type>USINT</Type>
-			<IGroup>61488</IGroup>
-			<IOffset>143</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_0</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>128</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_1</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>129</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_2</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>130</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_3</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>131</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_4</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>132</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_5</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>133</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_6</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>134</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_7</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>135</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_8</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>136</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_9</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>137</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_10</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>138</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_11</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>139</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_12</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>140</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_13</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>141</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_14</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>142</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Input">.PlcOutVar_15</Name>
-			<Type>USINT</Type>
-			<IGroup>61472</IGroup>
-			<IOffset>143</IOffset>
-			<BitSize>8</BitSize>
-		</Symbol>
-		<Symbol>
-			<Name Static="Output">.Term_2_KL2408_1_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_2_KL2408_1_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>0</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_2_KL2408_2_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_2_KL2408_2_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>1</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_2_KL2408_3_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_2_KL2408_3_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>2</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_2_KL2408_4_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_2_KL2408_4_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>3</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_2_KL2408_5_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_2_KL2408_5_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>4</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_2_KL2408_6_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_2_KL2408_6_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>5</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_2_KL2408_7_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_2_KL2408_7_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>6</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_2_KL2408_8_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_2_KL2408_8_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>7</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_3_KL2408_1_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_3_KL2408_1_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>8</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_3_KL2408_2_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_3_KL2408_2_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>9</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_3_KL2408_3_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_3_KL2408_3_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>10</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_3_KL2408_4_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_3_KL2408_4_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>11</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_3_KL2408_5_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_3_KL2408_5_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>12</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_3_KL2408_6_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_3_KL2408_6_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>13</IOffset>
@@ -1749,56 +1124,56 @@
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_3_KL2408_8_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_3_KL2408_8_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>15</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_4_KL2408_1_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_4_KL2408_1_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>16</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_4_KL2408_2_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_4_KL2408_2_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>17</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_4_KL2408_3_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_4_KL2408_3_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>18</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_4_KL2408_4_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_4_KL2408_4_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>19</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_4_KL2408_5_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_4_KL2408_5_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>20</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_4_KL2408_6_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_4_KL2408_6_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>21</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_4_KL2408_7_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_4_KL2408_7_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>22</IOffset>
@@ -1826,77 +1201,77 @@
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_5_KL2408_3_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_5_KL2408_3_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>26</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_5_KL2408_4_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_5_KL2408_4_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>27</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_5_KL2408_5_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_5_KL2408_5_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>28</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_5_KL2408_6_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_5_KL2408_6_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>29</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_5_KL2408_7_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_5_KL2408_7_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>30</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_5_KL2408_8_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_5_KL2408_8_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>31</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_6_KL2408_1_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_6_KL2408_1_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>32</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_6_KL2408_2_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_6_KL2408_2_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>33</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_6_KL2408_3_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_6_KL2408_3_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>34</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_6_KL2408_4_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_6_KL2408_4_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>35</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.Term_6_KL2408_5_Output</Name>
+			<Name Static="Output" TaskPrio="1">.Term_6_KL2408_5_Output</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset>36</IOffset>
@@ -1931,98 +1306,98 @@
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_7_KL1408_2_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_7_KL1408_2_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>1</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_7_KL1408_3_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_7_KL1408_3_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>2</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_7_KL1408_4_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_7_KL1408_4_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>3</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_7_KL1408_5_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_7_KL1408_5_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>4</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_7_KL1408_6_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_7_KL1408_6_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>5</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_7_KL1408_7_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_7_KL1408_7_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>6</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_7_KL1408_8_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_7_KL1408_8_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>7</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_8_KL1408_1_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_8_KL1408_1_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>8</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_8_KL1408_2_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_8_KL1408_2_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>9</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_8_KL1408_3_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_8_KL1408_3_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>10</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_8_KL1408_4_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_8_KL1408_4_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>11</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_8_KL1408_5_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_8_KL1408_5_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>12</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_8_KL1408_6_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_8_KL1408_6_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>13</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_8_KL1408_7_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_8_KL1408_7_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>14</IOffset>
@@ -2036,14 +1411,14 @@
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_9_KL1408_1_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_9_KL1408_1_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>16</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_9_KL1408_2_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_9_KL1408_2_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>17</IOffset>
@@ -2064,14 +1439,14 @@
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_9_KL1408_5_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_9_KL1408_5_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>20</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input">.Term_9_KL1408_6_Input</Name>
+			<Name Static="Input" TaskPrio="1">.Term_9_KL1408_6_Input</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
 			<IOffset>21</IOffset>
@@ -2146,6 +1521,746 @@
 			<IGroup>61473</IGroup>
 			<IOffset>31</IOffset>
 			<BitSize>1</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_CTL_BTN_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Выключатель основной]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>452</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_KTN_BTN_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Выключатель основной]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>453</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_KTN_BTN_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Выключатель для вытяжки]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>454</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_KTN_DTR_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Датчик протечек]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>455</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_KTN_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет основной]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>456</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_KTN_LIGHT_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет второстепенный (подсветка)]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>457</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_KTN_FAN_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Вытяжка]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>458</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_KTN_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>459</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_KTN_LIGHT_2</Name>
+			<Type>BOOL</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>460</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_KTN_FAN_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Балкон 2]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>461</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_BLKN_BTN_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Выключатель]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>462</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_BLKN_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>463</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_BLKN_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Гостиная 3]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>464</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_LVG_BTN_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Выключатель]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>465</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_LVG_BTN_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Выключатель на рабочем месте]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>466</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_LVG_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет основной]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>467</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_LVG_LIGHT_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет второстепенный]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>468</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_LVG_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>469</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_LVG_LIGHT_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Спальная 4]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>470</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_BDR_BTN_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Выключатель]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>471</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_BDR_BTN_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Выключатель над кроватью]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>472</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_BDR_BTN_3</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Выключатель над кроватью]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>473</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_BDR_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>474</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_BDR_LIGHT_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет второстепенный]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>475</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_BDR_LIGHT_3</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет над кроватью (торшер)]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>476</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_BDR_LIGHT_4</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет над кроватью (торшер)]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>477</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_BDR_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>478</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_BDR_LIGHT_2</Name>
+			<Type>BOOL</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>479</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_BDR_LIGHT_3</Name>
+			<Type>BOOL</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>480</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_BDR_LIGHT_4</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Ванная большая 5]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>481</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_BMB_BTN_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Выключатель основной]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>482</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_BMB_BTN_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Выключатель около зеркала]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>483</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_BMB_DTR_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Датчик протечек]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>484</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_BMB_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет основной]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>485</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_BMB_LIGHT_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет около зеркала]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>486</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_BMB_FAN_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Вытяжка]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>487</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_BMB_VLV_1_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Вентили]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>488</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_BMB_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>489</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_BMB_LIGHT_2</Name>
+			<Type>BOOL</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>490</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_BMB_FAN_1</Name>
+			<Type>BOOL</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>491</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name>.MB_BMB_VLV_1_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Детская 6]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>492</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_CHLD_BTN_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Выключатель]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>493</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_CHLD_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет основной]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>494</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_CHLD_LIGHT_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет второстепенный]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>495</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_CHLD_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>496</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_CHLD_LIGHT_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Коридор 7]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>497</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_HLL_BTN_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Проходной выключатель]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>498</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_HLL_BTN_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Проходной выключатель]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>499</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_HLL_BTN_3</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Выключатель на зеркало]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>500</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_HLL_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет основной]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>501</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_HLL_LIGHT_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет второстепенный]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>502</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_HLL_LIGHT_3</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет зеркало]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>503</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_HLL_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>504</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_HLL_LIGHT_2</Name>
+			<Type>BOOL</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>505</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_HLL_LIGHT_3</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Ванная малая 8]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>506</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_BMS_BTN_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Выключатель]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>507</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.IN_BMS_DTR_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Датчик протечек]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>508</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_BMS_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Свет]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>509</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_BMS_FAN_1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Вытяжка]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>510</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_BMS_VLV_1_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Вентиль]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>511</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_BMS_LIGHT_1</Name>
+			<Type>BOOL</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>512</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.MB_BMS_FAN_1</Name>
+			<Type>BOOL</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>513</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name>.MB_BMS_VLV_1_2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Розетки]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>514</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_0_SOCKET_G2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Неотключаемые (рядом со щитком, роутер, сервер и т.п.)]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>515</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_1_2_SOCKET_G1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Общие]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>516</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_1_2_SOCKET_G2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Неотключаемые (холодильник)]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>517</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_1_2_SOCKET_G3</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Посудомойка]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>518</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_1_2_SOCKET_G4</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Плита, 380В]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>519</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_3_4_SOCKET_G1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Общие]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>520</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_3_4_SOCKET_G2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Неотключаемые (компьютер)]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>521</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_5_SOCKET_G1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Общие]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>522</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_5_SOCKET_G2</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Стиральная машина]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>523</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_5_SOCKET_G3</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Резерв на бойлер и (или) баню]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>524</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.OUT_6_7_SOCKET_G1</Name>
+			<Type>BOOL</Type>
+			<Comment>
+				<![CDATA[Общие]]>
+			</Comment>
+			<IGroup>16448</IGroup>
+			<IOffset>525</IOffset>
+			<BitSize>8</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name Static="MArea" TaskPrio="1">.ModbusOutVar_0</Name>
+			<Type>UINT</Type>
+			<IGroup>16416</IGroup>
+			<IOffset>0</IOffset>
+			<BitSize>16</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name Static="MArea" TaskPrio="1">.ModbusOutVar_1</Name>
+			<Type>UINT</Type>
+			<IGroup>16416</IGroup>
+			<IOffset>2</IOffset>
+			<BitSize>16</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name Static="MArea" TaskPrio="1">.ModbusOutVar_2</Name>
+			<Type>UINT</Type>
+			<IGroup>16416</IGroup>
+			<IOffset>4</IOffset>
+			<BitSize>16</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name Static="MArea" TaskPrio="1">.ModbusInVar_0</Name>
+			<Type>UINT</Type>
+			<IGroup>16416</IGroup>
+			<IOffset>6</IOffset>
+			<BitSize>16</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name Static="MArea" TaskPrio="1">.ModbusInVar_1</Name>
+			<Type>UINT</Type>
+			<IGroup>16416</IGroup>
+			<IOffset>8</IOffset>
+			<BitSize>16</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name Static="MArea" TaskPrio="1">.ModbusInVar_2</Name>
+			<Type>UINT</Type>
+			<IGroup>16416</IGroup>
+			<IOffset>10</IOffset>
+			<BitSize>16</BitSize>
 		</Symbol>
 	</Symbols>
 	<VarConfigs/>
